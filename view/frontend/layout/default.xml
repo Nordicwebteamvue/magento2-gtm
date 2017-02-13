@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Kodbruket\Gtm\Block\DataLayer" name="gtm_datalayer" template="Kodbruket_Gtm::datalayer.phtml" ifconfig="google/gtm/active" />
+            <block class="Kodbruket\Gtm\Block\Snippet" name="gtm_js" template="Kodbruket_Gtm::script.phtml" ifconfig="google/gtm/active" />
+        </referenceBlock>
+        <referenceContainer name="after.body.start">
+            <block class="Kodbruket\Gtm\Block\Snippet" name="gtm_iframe" template="Kodbruket_Gtm::iframe.phtml" ifconfig="google/gtm/active" />
+        </referenceContainer>
+    </body>
+</page>

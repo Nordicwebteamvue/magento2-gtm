@@ -1,0 +1,6 @@
+<script>
+    window.dataLayer = window.dataLayer || [];
+<?php foreach($block->getDataLayer() as $data): ?>
+    dataLayer.push(<?php echo json_encode($data); ?>);
+<?php endforeach; ?>
+</script>

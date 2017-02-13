@@ -1,0 +1,21 @@
+{
+  "name": "kodbruket/magento2-gtm",
+  "description": "",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Andreas Karlsson",
+      "email": "andreas@kodbruket.se"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Kodbruket\\Gtm\\": ""
+    },
+    "files": [
+      "registration.php"
+    ]
+  }
+}
