@@ -7,28 +7,29 @@ use Magento\Framework\Event\ObserverInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\View\LayoutInterface;
 
-class SetTransactionToDataLayerOnCheckoutQuoteDestroy implements ObserverInterface
+class SaveQuoteIdOnCheckoutQuoteDestroy implements ObserverInterface
 {
     public function __construct(
         StoreManagerInterface $storeManager,
-        LayoutInterface $layout
+        LayoutInterface $layout,
+        \Magento\Checkout\Model\Session $checkoutSession
     ) {
         $this->layout = $layout;
         $this->storeManager = $storeManager;
+        $this->session = $checkoutSession;
     }
 
     public function execute(EventObserver $observer)
     {
         $quoteId = $observer->getEvent()->getQuote()->getId();
+        $session = $this->session;
 
         if (!$quoteId) {
             return;
         }
 
-        $block = $this->layout->getBlock('gtm_datalayer');
-
-        if ($block) {
-            $block->setQuoteId($quoteId);
+        if ($session) {
+            $session->setLastQuoteId($quoteId)->save();
         }
     }
 }
