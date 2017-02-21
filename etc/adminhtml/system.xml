@@ -21,6 +21,31 @@
                         <field id="*/*/active">1</field>
                     </depends>
                 </field>
+                <field id="use_custom_action_names" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use custom action names</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="full_action_name_for_product" translate="label,comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Full action name for product</label>
+                    <comment>Comma-separated</comment>
+                    <depends>
+                        <field id="*/*/use_custom_action_names">1</field>
+                    </depends>
+                </field>
+                <field id="full_action_name_for_category" translate="label,comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Full action name for category</label>
+                    <comment>Comma-separated</comment>
+                    <depends>
+                        <field id="*/*/use_custom_action_names">1</field>
+                    </depends>
+                </field>
+                <field id="full_action_name_for_checkout" translate="label,comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Full action name for checkout</label>
+                    <comment>Comma-separated</comment>
+                    <depends>
+                        <field id="*/*/use_custom_action_names">1</field>
+                    </depends>
+                </field>
             </group>
         </section>
     </system>

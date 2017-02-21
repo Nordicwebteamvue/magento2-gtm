@@ -27,21 +27,30 @@ class DataLayer extends DataObject
 
         $this->action = $this->context->getRequest()->getFullActionName();
 
-        switch ($this->action) {
-            case 'catalog_category_view':
-                $this->setCategoryData();
-                break;
-            case 'catalog_product_view':
-                $this->setProductData();
-                break;
-            case 'checkout_index_index':
-                $this->setCartData();
-                break;
-            case 'cms_noroute_index':
-                $this->set404Data();
-                break;
-            default:
-                break;
+        if ($this->helper->useCustomActionNames()) {
+            $fullActionNameForProduct = explode(',', $this->helper->getFullActionNameForProduct());
+            $fullActionNameForCategory = explode(',', $this->helper->getFullActionNameForCategory());
+            $fullActionNameForCheckout = explode(',', $this->helper->getFullActionNameForCheckout());
+        } else {
+            $fullActionNameForProduct = ['catalog_product_view'];
+            $fullActionNameForCategory = ['catalog_category_view'];
+            $fullActionNameForCheckout = ['checkout_index_index'];
+        }
+
+        if (in_array($this->action, $fullActionNameForCategory)) {
+            $this->setCategoryData();
+        }
+
+        if (in_array($this->action, $fullActionNameForProduct)) {
+            $this->setProductData();
+        }
+
+        if (in_array($this->action, $fullActionNameForCheckout)) {
+            $this->setCartData();
+        }
+
+        if ($this->action == 'cms_noroute_index') {
+            $this->set404Data();
         }
 
         $this->setCustomerData();
