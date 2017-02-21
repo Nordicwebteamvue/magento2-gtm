@@ -1,7 +1,7 @@
 {
   "name": "kodbruket/magento2-gtm",
   "version": "1.0.0",
-  "description": "",
+  "description": "Google Tag Manager for Magento 2",
   "license": "MIT License",
   "authors": [
     {
