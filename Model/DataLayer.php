@@ -200,16 +200,14 @@ class DataLayer extends DataObject
                 $transactionId = $entity->getId();
             }
 
-            $transaction = [
-                'transactionId' => $transactionId,
-                'transactionAffiliation' => '',
-                'transactionTotal' => $entity->getBaseGrandTotal(),
-                'transactionShipping' => $transactionShipping,
-                'transactionTax' => $transactionTax,
-                'transactionProducts' => $transactionProducts
-            ];
+            $data['transactionId'] = $transactionId;
+            $data['transactionAffiliation'] = '';
+            $data['transactionTotal'] = $entity->getBaseGrandTotal();
+            $data['transactionShipping'] = $transactionShipping;
+            $data['transactionTax'] = $transactionTax;
+            $data['transactionProducts'] = $transactionProducts;
 
-            $this->dataLayer[] = ['transaction' => $transaction];
+            $this->dataLayer[] = $data;
         }
     }
 
