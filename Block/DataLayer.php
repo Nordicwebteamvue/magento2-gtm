@@ -4,7 +4,7 @@ namespace Kodbruket\Gtm\Block;
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
-use Kodbruket\Gtm\Model\DataLayerModel as DataLayerModel;
+use Kodbruket\Gtm\Model\DataLayer as DataLayerModel;
 
 class DataLayer extends Template
 {
