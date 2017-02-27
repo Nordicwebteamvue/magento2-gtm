@@ -4,11 +4,11 @@ namespace Kodbruket\Gtm\Block;
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
-use Kodbruket\Gtm\Model\DataLayer;
+use Kodbruket\Gtm\Model\DataLayerModel as DataLayerModel;
 
 class DataLayer extends Template
 {
-    public function __construct(Context $context, DataLayer $dataLayer, array $data = [])
+    public function __construct(Context $context, DataLayerModel $dataLayer, array $data = [])
     {
         $this->dataLayer = $dataLayer;
 
