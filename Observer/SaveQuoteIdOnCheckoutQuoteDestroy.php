@@ -28,8 +28,8 @@ class SaveQuoteIdOnCheckoutQuoteDestroy implements ObserverInterface
             return;
         }
 
-        if ($session) {
-            $session->setLastQuoteId($quoteId)->save();
+        if ($session && is_object($session)) {
+            $session->setLastQuoteId($quoteId);
         }
     }
 }
