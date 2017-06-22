@@ -206,6 +206,7 @@ class DataLayer extends DataObject
             $data['transactionShipping'] = $transactionShipping;
             $data['transactionTax'] = $transactionTax;
             $data['transactionProducts'] = $transactionProducts;
+            $data['transactionCurrency'] = $entity->getBaseCurrencyCode();
 
             $this->dataLayer[] = $data;
         }
