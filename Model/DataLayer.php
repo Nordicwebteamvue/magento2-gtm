@@ -121,13 +121,13 @@ class DataLayer extends DataObject
                 $data['cart']['items'][] = [
                     'sku' => $item->getSku(),
                     'name' => $item->getName(),
-                    'price' => $item->getPrice(),
+                    'price' => number_format($item->getBasePrice(), 2, '.', ''),
                     'quantity' => $item->getQty(),
                     'currency' => $quote->getBaseCurrencyCode()
                 ];
             }
 
-            $data['cart']['total'] = $quote->getBaseGrandTotal();
+            $data['cart']['total'] = number_format($quote->getBaseGrandTotal(), 2, '.', '');
             $data['cart']['currency'] = $quote->getBaseCurrencyCode();
             $data['cart']['hasCoupons'] = (bool) $quote->getCouponCode();
 
@@ -172,7 +172,7 @@ class DataLayer extends DataObject
                 $product = [
                     'sku' => $item->getSku(),
                     'name' => $item->getName(),
-                    'price' => $item->getPrice()
+                    'price' => number_format($item->getBasePrice(), 2, '.', '')
                 ];
 
                 if ($this->helper->useQuote()) {
@@ -202,9 +202,9 @@ class DataLayer extends DataObject
 
             $data['transactionId'] = $transactionId;
             $data['transactionAffiliation'] = '';
-            $data['transactionTotal'] = $entity->getBaseGrandTotal();
-            $data['transactionShipping'] = $transactionShipping;
-            $data['transactionTax'] = $transactionTax;
+            $data['transactionTotal'] = number_format($entity->getBaseGrandTotal(), 2, '.', '');
+            $data['transactionShipping'] = number_format($transactionShipping, 2, '.', '');
+            $data['transactionTax'] = number_format($transactionTax, 2, '.', '');
             $data['transactionProducts'] = $transactionProducts;
             $data['transactionCurrency'] = $entity->getBaseCurrencyCode();
 
